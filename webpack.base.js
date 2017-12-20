@@ -3,11 +3,11 @@ module.exports = {
   module: {
     rules: [
       { test: /\.vue$/, use: 'vue-loader' },
-      { test: /\.js$/, use: 'babel-loader' }
+      { test: /\.js$/, use: 'babel-loader' },
+      { test: /\.(?:png|jpe?g|svg)$/, use: 'file-loader'}
     ]
   },
   externals: {
-    'vue': 'Vue',
-    'element-ui': 'element-ui'
+    'vue': 'Vue'
   }
 };
