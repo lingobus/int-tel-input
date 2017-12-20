@@ -1,7 +1,7 @@
 {
   "name": "int-tel-input",
-  "version": "1.0.0",
-  "description": "International Telephone Input Component for ElementUI",
+  "version": "1.0.1",
+  "description": "International Telephone Input Component",
   "main": "index.js",
   "scripts": {
     "dev": "webpack-dev-server --config ./webpack.example.config.js --inline --hot",
@@ -13,7 +13,6 @@
     "url": "git+https://github.com/lingobus/int-tel-input.git"
   },
   "keywords": [
-    "ElementUI",
     "Vue"
   ],
   "author": "gzm1211@126.com",
@@ -27,7 +26,7 @@
     "babel-loader": "^7.1.2",
     "css-loader": "^0.28.7",
     "extract-text-webpack-plugin": "^3.0.2",
-    "file-loader": "^1.1.5",
+    "file-loader": "^1.1.6",
     "pug": "^2.0.0-rc.4",
     "pug-loader": "^2.3.0",
     "style-loader": "^0.19.0",
@@ -39,6 +38,7 @@
     "vue-loader": "^13.5.0",
     "vue-template-compiler": "^2.5.9",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7"
+    "webpack-dev-server": "^2.9.7",
+    "webpack-merge": "^4.1.1"
   }
 }
