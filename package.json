@@ -1,8 +1,8 @@
 {
   "name": "int-tel-input",
-  "version": "1.0.1",
+  "version": "1.0.5",
   "description": "International Telephone Input Component",
-  "main": "index.js",
+  "main": "dist/int-tel-input.js",
   "scripts": {
     "dev": "webpack-dev-server --config ./webpack.example.config.js --inline --hot",
     "build": "webpack",
@@ -29,9 +29,10 @@
     "file-loader": "^1.1.6",
     "pug": "^2.0.0-rc.4",
     "pug-loader": "^2.3.0",
-    "style-loader": "^0.19.0",
+    "style-loader": "^0.19.1",
     "stylus": "^0.54.5",
     "stylus-loader": "^3.0.1",
+    "uglifyjs-webpack-plugin": "^1.1.4",
     "url-loader": "^0.6.2",
     "vue-hot-reload-api": "^2.2.4",
     "vue-html-loader": "^1.2.4",
@@ -40,5 +41,6 @@
     "webpack": "^3.10.0",
     "webpack-dev-server": "^2.9.7",
     "webpack-merge": "^4.1.1"
-  }
+  },
+  "dependencies": {}
 }
