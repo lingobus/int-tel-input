@@ -4,7 +4,8 @@
       input(
         readonly,
         ref="selectInput",
-        :value="selectedInput")
+        :value="selectedInput"
+      )
       .int-tel-icon(:class="{'is-reverse': visible}")
     transition(name="zoom-in-top")
       .select-dropdown(v-show="visible", ref="selectDropdown")
@@ -369,8 +370,6 @@
         this.filterString = ''
       },
       scrollIntoView (container, selected) {
-        if (Vue.prototype.$isServer) return
-
         if (!selected) {
           container.scrollTop = 0
           return
@@ -1494,7 +1493,7 @@
 <style lang="stylus" scoped>
   $purple = #887bd7
   $defaultColor = #999
-  input 
+  input
     outline none
     border: none
     font-size: inherit
@@ -1517,7 +1516,7 @@
         bottom: 0
         width: 35px
         transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms
-        background: url('../assets/icon-arrow-down.svg') center no-repeat
+        background: url('//unpkg.com/int-tel-input@1.0.5/assets/icon-arrow-down.svg') center no-repeat
         &.is-reverse
           transform: rotate(-180deg)
       > input
@@ -1567,7 +1566,7 @@
               width 34px
               height 34px
               content: ''
-              background: url('../assets/icon-search.svg') center no-repeat
+              background: url('//unpkg.com/int-tel-input@1.0.5/assets/icon-search.svg') center no-repeat
               cursor: pointer
             input
               width: 100%
@@ -1618,7 +1617,7 @@
               float: left
               width: 20px
               height: 15px
-              background-image: url('../assets/flags@2x.png')
+              background-image: url('//unpkg.com/int-tel-input@1.0.5/assets/flags@2x.png')
               background-repeat: no-repeat
               background-size: 5630px 15px
               background-color: #DBDBDB
