@@ -40,8 +40,8 @@
       input(
         type="tel",
         :readonly="disabled",
-        :value="phoneNumber",
-        @input="phoneNumberInputHandel",
+        :value="phone",
+        @input="phoneInputHandel",
         :placeholder="placeholder"
       )
 </template>
@@ -307,7 +307,7 @@
 
     props: {
       disabled: Boolean,
-      phoneNumber: String,
+      phone: String,
       countryAbbr: {
         type: String,
         default: 'cn'
@@ -405,10 +405,10 @@
       selectOptionHandle (value, key) {
         let {addr, code, name} = value
         this.visible = false
-        this.$emit('countryChange', {addr, code, name})
+        this.$emit('country-change', {addr, code, name})
       },
-      phoneNumberInputHandel (event) {
-        this.$emit('phoneNumberChange', event.target.value)
+      phoneInputHandel (event) {
+        this.$emit('phone-change', event.target.value)
       },
       documentClickHandle (e) {
         if (!this.visible) return
@@ -421,7 +421,7 @@
 
     mounted() {
       let {addr, code, name} = phonesData[this.countryAbbr]
-      this.$emit('countryChange', {addr, code, name})
+      this.$emit('country-change', {addr, code, name})
       document.addEventListener('click', this.documentClickHandle)
     },
 
@@ -1516,7 +1516,7 @@
         bottom: 0
         width: 35px
         transition: transform 300ms cubic-bezier(0.23, 1, 0.32, 1) 100ms
-        background: url('//unpkg.com/int-tel-input@1.0.5/assets/icon-arrow-down.svg') center no-repeat
+        background: url('//unpkg.com/int-tel-input@1.0.6/assets/icon-arrow-down.svg') center no-repeat
         &.is-reverse
           transform: rotate(-180deg)
       > input
@@ -1566,7 +1566,7 @@
               width 34px
               height 34px
               content: ''
-              background: url('//unpkg.com/int-tel-input@1.0.5/assets/icon-search.svg') center no-repeat
+              background: url('//unpkg.com/int-tel-input@1.0.6/assets/icon-search.svg') center no-repeat
               cursor: pointer
             input
               width: 100%
@@ -1617,7 +1617,7 @@
               float: left
               width: 20px
               height: 15px
-              background-image: url('//unpkg.com/int-tel-input@1.0.5/assets/flags@2x.png')
+              background-image: url('//unpkg.com/int-tel-input@1.0.6/assets/flags@2x.png')
               background-repeat: no-repeat
               background-size: 5630px 15px
               background-color: #DBDBDB

@@ -1,10 +1,10 @@
 <template lang="pug">
   #demo
     int-tel-input(
-      :phoneNumber="user.phone",
-      :countryAbbr="user.countryAbbr",
-      @countryChange="countryCodeChange",
-      @phoneNumberChange="phoneNumberChange"
+      :phone="user.phone",
+      :country-abbr="user.countryAbbr",
+      @country-change="countryCodeChange",
+      @phone-change="phoneChange"
     )
     p
       span(v-text="`phone number: ${user.phone}`")
@@ -35,8 +35,8 @@ export default {
       this.user.countryAbbr = country.addr
       this.user.countryCode = country.code
     },
-    phoneNumberChange (phoneNumber) {
-      this.user.phone = phoneNumber
+    phoneChange (phone) {
+      this.user.phone = phone
     }
   }
 }
