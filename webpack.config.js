@@ -1,6 +1,7 @@
-/*eslint-env node */
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const path = require('path')
+const webpack = require('webpack')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 const merge = require('webpack-merge')
 const baseWebpackConfig = require('./webpack.base.js')
 
@@ -11,7 +12,18 @@ let webpackConfig = merge(baseWebpackConfig, {
     libraryTarget: 'umd',
     filename: 'int-tel-input.js',
     path: path.resolve(__dirname, 'dist')
-  }
+  },
+  plugins: [
+    new webpack.optimize.ModuleConcatenationPlugin(),
+    new webpack.DefinePlugin({
+      'process.env': {
+        NODE_ENV: '"production"'
+      }
+    }),
+    new UglifyJSPlugin({
+      test: /\.js($|\?)/i
+    })
+  ]
 })
 
 module.exports = webpackConfig
