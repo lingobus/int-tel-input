@@ -15,7 +15,7 @@
 </template>
 
 <script>
-import {IntTelInput} from '../src/index.js'
+import IntTelInput from '../dist/int-tel-input.js'
 
 export default {
   components: {IntTelInput},
