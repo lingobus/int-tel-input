@@ -1,3 +1,3 @@
-import IntTelInput from './main.vue';
+import IntTelInput from './main.vue'
 
-export { IntTelInput };
+export default IntTelInput
