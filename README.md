@@ -5,7 +5,7 @@ International Telephone Input Component
 
 ## example
 
-[View demo on jsFiddle](https://jsfiddle.net/GaoZimeng/5wpavdv7/8/)
+[View demo on jsFiddle](https://jsfiddle.net/GaoZimeng/5wpavdv7/12/)
 
 
 
