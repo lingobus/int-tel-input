@@ -348,9 +348,9 @@
       calculatePhoneData () {
         if (!this.filterString && !this.filterLetter) return phonesData
 
-        let filter = this.filterString || `^${this.filterLetter}`
+        let filter = this.filterString.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1") || `^${this.filterLetter}`
         const arr = this.filterString ? ['addr', 'name', 'code'] : ['name']
-	filter = filter.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1")
+
         let reg = new RegExp(`${filter}`, 'i')
         let obj = {}
         for (const key in phonesData) {
