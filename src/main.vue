@@ -8,7 +8,15 @@
       )
       .int-tel-icon(:class="{'is-reverse': visible}")
     transition(name="zoom-in-top")
-      .select-dropdown(v-show="visible", ref="selectDropdown")
+    .int-tel-input
+      input(
+        type="tel",
+        :readonly="disabled",
+        :value="phone",
+        @input="phoneInputHandel",
+        :placeholder="placeholder"
+      )
+    .select-dropdown(v-show="visible", ref="selectDropdown")
         .scrollbar__wrap
           .filter-wapper
             .filter-input
@@ -36,14 +44,6 @@
               span.int-countries-flag(:class="item.addr")
               span.int-countries-name(v-text="item.name")
               span.int-countries-addr(v-text="`+${item.code}`")
-    .int-tel-input
-      input(
-        type="tel",
-        :readonly="disabled",
-        :value="phone",
-        @input="phoneInputHandel",
-        :placeholder="placeholder"
-      )
 </template>
 
 <script>
@@ -376,20 +376,8 @@
         }
 
         this.$nextTick(() => {
-          const containerOffsetTop = container.offsetTop
-          const selectOffsetTop = selected.offsetTop
-          const containerClientHeight = container.clientHeight
-
-          const top = selectOffsetTop
-          
-          const bottom = selectOffsetTop + selected.offsetHeight
-          const viewRectTop = container.scrollTop
-          const viewRectBottom = viewRectTop + containerClientHeight
-          if (top < viewRectTop) {
-            container.scrollTop = top - containerOffsetTop
-          } else if (bottom > viewRectBottom) {
-            container.scrollTop = bottom - containerClientHeight - containerOffsetTop
-          }
+            selected.scrollIntoView({behavior: "instant", block: "center", inline: "center"});
+            container.scrollIntoView({behavior: "smooth", block: "center", inline: "center"});
         })
       },
       selectInputClickHandle () {
@@ -420,8 +408,10 @@
     },
 
     mounted() {
-      let {addr, code, name} = phonesData[this.countryAbbr]
-      this.$emit('country-change', {addr, code, name})
+        if (phonesData[this.countryAbbr]) {
+            let {addr, code, name} = phonesData[this.countryAbbr]
+            this.$emit('country-change', {addr, code, name})
+        }
       document.addEventListener('click', this.documentClickHandle)
     },
 
@@ -1540,11 +1530,10 @@
           border-color: $purple
           z-index: 1
     .select-dropdown
-      position: absolute
-      z-index: 2
-      top: 100%
-      left: 0
-      right: 0
+      float: left
+      float: left;
+      width: calc(100% + 120px);
+      margin-left: -120px;
       margin-top: -1px
       box-shadow: 0 2px 10px 0 rgba(0,0,0,0.067)
       background: #fff
