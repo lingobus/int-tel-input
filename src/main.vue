@@ -315,6 +315,10 @@
       placeholder: {
         type: String,
         default: 'Phone number'
+      },
+      onlyCountries: {
+        type: Array,
+        default: null
       }
     },
 
@@ -346,17 +350,29 @@
         return currentCountry ? `${currentCountry.addr.toUpperCase()} +${currentCountry.code}` : ''
       },
       calculatePhoneData () {
-        if (!this.filterString && !this.filterLetter) return phonesData
+        let listOfCountries = {};
+
+        if (this.onlyCountries && this.onlyCountries.length) {
+            let formateOnlyCountries = this.onlyCountries.map(item => item.toLowerCase());
+
+            for (const key in phonesData) {
+                if (formateOnlyCountries.includes(key)) listOfCountries[key] = phonesData[key];
+            }
+        } else {
+            listOfCountries = phonesData;
+        }
+        
+        if (!this.filterString && !this.filterLetter) return listOfCountries;
 
         let filter = this.filterString || `^${this.filterLetter}`
         const arr = this.filterString ? ['addr', 'name', 'code'] : ['name']
 
         let reg = new RegExp(`${filter}`, 'i')
         let obj = {}
-        for (const key in phonesData) {
+        for (const key in listOfCountries) {
           arr.forEach(i => {
-            if (reg.test(phonesData[key][i])) {
-              obj[key] = phonesData[key]
+            if (reg.test(listOfCountries[key][i])) {
+              obj[key] = listOfCountries[key]
             }
           })
         }
